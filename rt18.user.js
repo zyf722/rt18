@@ -119,6 +119,8 @@
 
     // Create an anchor element for the title text
     const titleText = createElementWithAttr('a', {id: 'jm-title-text', class: 'jm-select-none jm-overflow jm-title'});
+    titleText.setAttribute('target', '_blank');
+    titleText.setAttribute('rel', 'noopener noreferrer');
     popupWindow.appendChild(titleText);
 
     // Create a div element for the title loading text
