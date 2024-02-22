@@ -83,8 +83,8 @@
 
         if (typeof path === 'string') {
             const p = createSVGPath(path);
-        svg.appendChild(p);
-        return [svg, p];
+            svg.appendChild(p);
+            return [svg, p];
         } else if (Array.isArray(path)) {
             const paths = path.map(p => {
                 const newPath = createSVGPath(p);
