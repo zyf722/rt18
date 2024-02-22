@@ -63,6 +63,13 @@
         return element;
     };
 
+    const createSVGPath = (path) => {
+        const p = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+        p.setAttribute('d', path);
+        p.setAttribute('fill', 'currentColor');
+        return p;
+    };
+
     const createSVGElement = (path, viewBox, width, height, attr) => {
         const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         svg.setAttribute('viewBox', viewBox);
@@ -74,12 +81,21 @@
             });
         }
 
-        const p = document.createElementNS("http://www.w3.org/2000/svg", 'path');
-        p.setAttribute('d', path);
-        p.setAttribute('fill', 'currentColor');
+        if (typeof path === 'string') {
+            const p = createSVGPath(path);
         svg.appendChild(p);
         return [svg, p];
-    }
+        } else if (Array.isArray(path)) {
+            const paths = path.map(p => {
+                const newPath = createSVGPath(p);
+                svg.appendChild(newPath);
+                return newPath;
+            });
+            return [svg, ...paths];
+        } else {
+            throw new Error('Invalid path type');
+        }
+    };
 
     const popupWindow = createElementWithAttr('div', {id: 'jm-popup', class: 'jm-select-none'});
     document.body.appendChild(popupWindow);
@@ -144,7 +160,7 @@
     const COPY_ICON = 'M931.882 131.882l-103.764-103.764A96 96 0 0 0 760.236 0H416c-53.02 0-96 42.98-96 96v96H160c-53.02 0-96 42.98-96 96v640c0 53.02 42.98 96 96 96h448c53.02 0 96-42.98 96-96v-96h160c53.02 0 96-42.98 96-96V199.764a96 96 0 0 0-28.118-67.882zM596 928H172a12 12 0 0 1-12-12V300a12 12 0 0 1 12-12h148v448c0 53.02 42.98 96 96 96h192v84a12 12 0 0 1-12 12z m256-192H428a12 12 0 0 1-12-12V108a12 12 0 0 1 12-12h212v176c0 26.51 21.49 48 48 48h176v404a12 12 0 0 1-12 12z m12-512h-128V96h19.264c3.182 0 6.234 1.264 8.486 3.514l96.736 96.736a12 12 0 0 1 3.514 8.486V224z';
 
     // Create an SVG element for the copy button icon
-    const [copyBtnIcon, copyBtnIconPath] = createSVGElement(COPY_ICON, '0 0 1024 1024', '16px', '16px', {id: 'jm-copy-icon'});
+    const [copyBtnIcon, copyBtnCopyPath, copyBtnDonePath] = createSVGElement([COPY_ICON, DONE_ICON], '0 0 1024 1024', '16px', '16px', {id: 'jm-copy-icon'});
     copyBtn.appendChild(copyBtnIcon);
 
     // Function to disable the copy button
