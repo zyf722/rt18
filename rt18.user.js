@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         18Comic 之路
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @license      MIT
 // @description  JM / 18Comic 车牌号划词查询工具
 // @author       zyf722
