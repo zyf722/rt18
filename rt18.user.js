@@ -161,11 +161,15 @@
 
     // Create an SVG element for the copy button icon
     const [copyBtnIcon, copyBtnCopyPath, copyBtnDonePath] = createSVGElement([COPY_ICON, DONE_ICON], '0 0 1024 1024', '16px', '16px', {id: 'jm-copy-icon'});
+    copyBtnDonePath.classList.toggle('jm-copy-icon-hide');
+    copyBtnCopyPath.classList.add('jm-copy-icon');
+    copyBtnDonePath.classList.add('jm-copy-icon');
     copyBtn.appendChild(copyBtnIcon);
 
     // Function to disable the copy button
     const disableBtn = (status) => {
         copyBtn.disabled = status;
+        copyBtn.style.pointerEvents = status ? 'none' : 'auto';
         copyBtnIcon.setAttribute('color', status ? 'gray' : 'dodgerblue');
     };
     disableBtn(true);
@@ -239,6 +243,23 @@
             cursor: pointer;
             grid-column: 2;
             grid-row: 1 / 3;
+            transition: background-color 0.3s;
+        }
+
+        #jm-copy:hover:not(:disabled) {
+            background-color: #f6f6f6;
+        }
+
+        #jm-copy:active:not(:disabled) {
+            background-color: #e6e6e6;
+        }
+
+        .jm-copy-icon {
+            transition: opacity 0.25s;
+        }
+
+        .jm-copy-icon-hide {
+            opacity: 0;
         }
     `;
     document.head.appendChild(style);
@@ -254,18 +275,24 @@
                 callback(title.replace(" Comics - 禁漫天堂", ""));
             }
         });
-    }
+    };
 
     // Function to copy the title text to the clipboard
     const copyToClipboard = (event) => {
         navigator.clipboard.writeText(titleText.innerText);
-        copyBtn.disabled = true;
-        copyBtnIconPath.setAttribute('d', DONE_ICON);
+        copyBtn.style.pointerEvents = 'none';
+        copyBtnCopyPath.classList.toggle('jm-copy-icon-hide');
         setTimeout(() => {
-            copyBtnIconPath.setAttribute('d', COPY_ICON);
-            copyBtn.disabled = false;
+            copyBtnDonePath.classList.toggle('jm-copy-icon-hide');
+        }, 250);
+        setTimeout(() => {
+            copyBtnDonePath.classList.toggle('jm-copy-icon-hide');
+            setTimeout(() => {
+                copyBtnCopyPath.classList.toggle('jm-copy-icon-hide');
+                copyBtn.style.pointerEvents = 'auto';
+            }, 250);
         }, 1500);
-    }
+    };
     copyBtn.addEventListener('click', copyToClipboard);
 
     // Function to show the popup window
