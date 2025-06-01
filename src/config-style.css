@@ -1,0 +1,150 @@
+#rt18-config-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#rt18-config-dialog {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 500px;
+  max-width: 90%;
+  position: relative;
+}
+
+.rt18-config-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.rt18-config-section {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#rt18-source-list {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#rt18-source-list li {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rt18-source-text {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.rt18-source-controls {
+  display: flex;
+  align-items: center;
+}
+
+.rt18-source-button {
+  margin-left: 5px;
+  padding: 4px 8px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #f0f0f0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  text-align: center;
+}
+
+.rt18-source-button:hover {
+  background-color: #e0e0e0;
+}
+
+.rt18-source-button-delete {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+.rt18-source-button-delete:hover {
+  background-color: #f1b0b7;
+}
+
+.rt18-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #e9ecef;
+}
+
+.rt18-button-disabled:hover {
+  background-color: #e9ecef;
+}
+
+.rt18-add-source-container {
+  display: flex;
+  margin-top: 10px;
+}
+
+#rt18-add-source-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+
+#rt18-add-source-btn {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-left: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#rt18-add-source-btn:hover {
+  background-color: #0056b3;
+}
+
+.rt18-config-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.rt18-config-description {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 0;
+}

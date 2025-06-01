@@ -1,0 +1,142 @@
+.jm-select-none, .jm-select-none * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.jm-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#jm-popup {
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999999999999;
+    display: none;
+    max-width: 25%;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.jm-title {
+    max-width: 100%;
+    font-size: 14px;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#jm-title-text {
+    display: none;
+}
+
+#jm-number-container {
+    max-width: 100%;
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+}
+
+#jm-number {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#jm-number-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+#jm-copy {
+    border: none;
+    background-color: #fff;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    cursor: pointer;
+    grid-column: 2;
+    grid-row: 1 / 3;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#jm-copy:hover:not(:disabled) {
+    background-color: #f6f6f6;
+}
+
+#jm-copy:active:not(:disabled) {
+    background-color: #e6e6e6;
+}
+
+#jm-copy-icon {
+    width: 16px;
+    height: 16px;
+    transition: opacity 0.25s;
+}
+
+.jm-copy-icon-hide {
+    opacity: 0;
+}
+
+/* Styles for details section */
+#jm-details-container {
+    grid-column: 1 / span 2; /* Span across both columns */
+    grid-row: 3; /* Place it in the third row */
+    display: grid; /* Changed to grid for internal layout */
+    gap: 5px; /* Gap between detail rows */
+    font-size: 12px;
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.jm-detail-row {
+    display: contents; /* Allows children to align with the parent grid if #jm-details-container is grid */
+}
+
+.jm-detail-row > span {
+    padding: 2px 0;
+}
+
+.jm-detail-label {
+    font-weight: bold;
+    color: #555;
+    white-space: nowrap;
+}
+
+.jm-detail-value {
+    color: #333;
+    /* jm-overflow is already defined, ensure it's applied where needed */
+}
+
+.jm-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.jm-tag-item {
+    vertical-align: middle;
+    background: rgba(0,0,0,.07);
+    color: #777;
+    font-size: 12px;
+    line-height: 16px;
+    display: inline-block;
+    padding: 0 3px;
+    margin: -2px 0 0 2px;
+    border-radius: 2px;
+    letter-spacing: -0.6px;
+    bottom: 0;
+}

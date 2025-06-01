@@ -1,0 +1,33 @@
+<div id="rt18-config-dialog-overlay">
+  <div id="rt18-config-dialog">
+    <h2>18Comic 之路配置</h2>
+    <button id="rt18-config-close-btn" class="rt18-config-close-button">×</button>
+    <div class="rt18-config-section">
+      <h3>API 线路配置</h3>
+      <ul id="rt18-source-list"></ul>
+      <div class="rt18-add-source-container">
+        <input type="text" id="rt18-add-source-input" placeholder="输入新线路域名">
+        <div id="rt18-add-source-btn" class="rt18-config-button">添加线路</div>
+      </div>
+      <p class="rt18-config-description">脚本运行时将按照配置的 API 线路顺序获取车牌对应信息，直到成功获取为止。</p>
+    </div>
+    <div class="rt18-config-section">
+      <h3>API 请求超时配置</h3>
+      <input type="number" id="rt18-config-timeout-input" class="rt18-config-input" min="1000" step="1000">
+      <p class="rt18-config-description">网络请求的超时时间，单位为毫秒。</p>
+    </div>
+    <div class="rt18-config-section">
+      <h3>JM 网站线路</h3>
+      <input type="url" id="rt18-config-jm-url-input" class="rt18-config-input" placeholder="例如: https://18comic.vip">
+      <p class="rt18-config-description">用于拼接最终跳转的 18Comic / JM 网站地址。可访问 <a href="https://jmcomic-fb.vip" target="_blank" rel="noopener noreferrer">jmcomic-fb.vip</a> 获取最新线路。</p>
+    </div>
+    <div class="rt18-config-section">
+      <h3>布局选择</h3>
+      <select id="rt18-config-layout-select" class="rt18-config-input">
+        <option value="details">详细布局（显示漫画详细信息）</option>
+        <option value="compact">紧凑布局（旧版布局，仅显示漫画名称）</option>
+      </select>
+      <p class="rt18-config-description">漫画浮窗窗口的布局样式。</p>
+    </div>
+  </div>
+</div>
