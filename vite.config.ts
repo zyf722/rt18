@@ -24,7 +24,7 @@ export default defineConfig({
       },
       build: {
         externalGlobals: {
-          'crypto-js': cdn.jsdelivr('crypto-js'),
+          'crypto-js': cdn.jsdelivr('CryptoJS', 'crypto-js.js'),
         },
       },
     }),
